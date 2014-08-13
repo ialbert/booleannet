@@ -9,7 +9,7 @@ I will be happy to respond to questions and/or comments.
 Colin Campbell
 Contact: colin.campbell@psu.edu
 Python Version: 2.7.x
-Date: April 2014
+Date: April 2014 (updated August 2014)
 '''
 import networkx as nx
 import numpy as np
@@ -191,9 +191,9 @@ def compare_attractors(graph,a):
                     valid += [switch_state]
     if len(valid)==0: return False, [a[0],[damage_state(graph,x) for x in a[1]]]# If there are no state collapses, we straightforwardly damage every state in a according to graph damage.
 
-    positions = range(1,len(a))
+    positions = range(1,len(a[1]))
     cur_pos = 0
-    route = [a[1][0]]
+    route = []
     while True:                                                                 # We walk across the state transition map, sensitive to invalid states due to state collapse
         if a[1][cur_pos] in invalid:
             while a[1][cur_pos] in invalid:
