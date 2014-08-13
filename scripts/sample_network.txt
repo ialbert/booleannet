@@ -1,0 +1,11 @@
+# Lines beginning with the # symbol are comments
+# Every node must be given an update rule in the format: <node_name>* = <rule> 
+# <node_name> is case sensitive and may be any string
+# <rule> is case sensitive and must "True", "False", or a logical combination of: 
+# node names, "not", "and", "or", and parenthetical grouping (multiple levels OK)
+
+A* = not (B or C)
+B* = (B and (D and E)) or A
+C* = (A or B) and not (C and D)
+D* = A
+E* = True

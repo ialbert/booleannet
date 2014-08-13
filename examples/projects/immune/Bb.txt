@@ -1,0 +1,62 @@
+
+# lines starting with the # symbol are comments
+
+#
+# Mammalian immune response to B. bronchiseptica infection
+#
+# Node initialization is done programattically from excel files
+# saved in csv format. See code for details
+#
+# Model specification syntax
+#
+# rank: node1 *=  node1 and node2 or node3  ... etc
+#
+# The first number is the rank (all are set to 1 here)
+#
+# 1: A *= A or B
+#
+# means that the new value of A is equal to the old values 
+# of A and B combined with the operator 'or'
+#
+# Note that in this simulation most nodes are altered at runtime
+#
+#
+#I:  I/ Lungs
+#II: compartment II/ Lymph
+#
+# model starts below
+
+1: Bb* = Bb and not PH 
+1: TTSSI* = Bb and not (Cab or Oab) 
+1: TTSSII* = TTSSI
+1: Oag* = Bb
+1: EC* = Bb
+1: Cab* = BC or Cab
+1: C* = (Bb and not Oag) or (AgAb and Cab) 
+1: AgAb* = Bb and (Oab or Cab)
+1: Oab* = BC or Oab
+1: BC* = Th2II
+1: PIC* = (EC or DP or AP) and not IL10I
+1: IL12I* = (DCII and T0 and not IL4II) #1-prop
+1: IL12II* = (DCII and T0 and not IL4II)#prop
+1: IL4I* = (DCII and T0) and not IL12II #1-prop
+1: IL4II* = (DCII and T0) and not IL12II #prop
+1: IL10I* = (TrI or Th2I or (MPI and TTSSI)) and not IL12I 
+1: IL10II* = (TrI or Th2I or (MPI and TTSSI)) and not IL12I 
+1: IFNgI* = (Th1I or MPI) and not (IL10I or IL4I) #prop
+1: IFNgII* = (Th1I or MPI) and not (IL10I or IL4I) #1-prop
+1: RP* = PIC
+1: DP* = RP and TTSSI
+1: MPI* = (PIC or IFNgI) and not IL10I #lpde(MP)-Hill(MP, H, n)
+1: MPII* = MPI
+1: AP* = Bb and (RP or MPI) and ((C and Cab) or AgAb)
+1: T0* = DCII
+1: TrII* = DCII and T0 and TTSSII
+1: TrI* = TrII
+1: Th1II* = DCII and T0 and IL12II
+1: Th1I* = Th1II
+1: Th2II* = DCII and T0 and not IL12II
+1: Th2I* = Th2II
+1: DCI* = IFNgI or PIC or Bb
+1: DCII* = DCI
+1: PH* = AP and Bb

@@ -1,0 +1,68 @@
+
+# lines starting with the # symbol are comments
+
+
+#
+# Abscisic Acid signaling model
+#
+# Node initialization below, 
+# ( all other nodes are set to random values in the program)
+#
+
+Closure = False
+ABA = ABH1 = ERA1 = AGB1 = True
+
+
+#
+# Model specification syntax
+#
+# rank: node1 *=  node1 and node2 or node3  ... etc
+#
+# The first number is the rank (all are set to 1 here)
+#
+# 1: A *= A or B
+#
+# means that the new value of A is equal to the old values 
+# of A and B combined with the operator 'or'
+#
+# model starts below
+#
+
+1: SphK* = ABA
+1: S1P* =  SphK
+1: GPA1* = (S1P or not GCR1) and AGB1
+1: PLD* = GPA1
+1: PA * = PLD
+1: pHc * = ABA
+1: OST1* = ABA
+1: ROP2* = PA
+1: Atrboh* = pHc and OST1 and ROP2 and not ABI1
+1: ROS* = Atrboh
+1: H+ATPase* = not ROS and not pHc and not Ca2+c
+1: ABI1* = pHc and not PA and not ROS
+1: RCN1*= ABA
+1: NIA12*= RCN1
+1: NOS* = Ca2+c
+1: NO* = NIA12 and NOS
+1: GC* = NO
+1: ADPRc* =  NO
+1: cADPR* = ADPRc
+1: cGMP* = GC
+1: PLC* = ABA and Ca2+c
+1: InsP3* = PLC
+1: InsPK* = ABA
+1: InsP6* = InsPK
+1: CIS* = (cGMP and cADPR) or (InsP3 and InsP6) 
+1: Ca2+ATPase* = Ca2+c
+1: Ca2+c * = (CaIM or CIS) and (not Ca2+ATPase)
+1: AnionEM* = ((Ca2+c or pHc) and not ABI1 ) or (Ca2+c and pHc)
+1: Depolar* = KEV or AnionEM  or (not H+ATPase) or (not KOUT) or Ca2+c
+1: CaIM* = (ROS or not ERA1 or not ABH1) and (not Depolar)
+1: KOUT* = (pHc or not ROS or not NO) and Depolar
+1: KAP* = (not pHc or not Ca2+c) and Depolar
+1: KEV* = Ca2+c
+1: PEPC* = not ABA
+1: Malate* = PEPC and not ABA and not AnionEM
+1: RAC1* = not ABA and not ABI1
+1: Actin* = Ca2+c  or not RAC1
+1: Closure* = (KOUT or KAP ) and AnionEM  and Actin and not Malate

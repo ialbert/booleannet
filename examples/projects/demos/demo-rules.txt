@@ -1,0 +1,22 @@
+#
+# Test rules 
+#
+#
+# lines starting with # are comments and are ignored, same with empty lines
+#
+
+
+# setting nodes to true and false
+A = B = True
+C = D = False
+
+# randomly chooses True or False, E and F have the same value
+E = F = Random
+
+# another random value for G
+G = Random
+
+# make this one cycle
+1: A* = ( not A )
+1: E *= G and B 
+

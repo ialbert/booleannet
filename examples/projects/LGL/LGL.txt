@@ -1,0 +1,76 @@
+
+# lines starting with the # symbol are comments
+
+
+#
+# T-cell large granular lymphocyte leukemia model
+#
+# Node initialization below, 
+# ( all other nodes are set to false inside the program)
+#
+
+Stimuli = IAP = Mcl1 = BclxL = PIAS = True
+
+#
+# Model specification syntax
+#
+# rank: new-node1 *=  node1 and node2 or node3  ... etc
+#
+# the first number is the rank (all are set to 1 here)
+#
+# 1: A *= A or B
+#
+# means that the new value of A is equal to the old values 
+# of A and B combined with the operator 'or'
+#
+# model starts below
+#
+1: TCR *= Stimuli and not (CTLA4 or Apoptosis)
+1: Fyn *= IL2RL and not Apoptosis
+1: Migration *= Fyn and not Apoptosis
+1: CTLA4 *= TCR and not Apoptosis
+1: LCK *= (TCR or IL2RL or CD45) and not (CSK or Apoptosis)
+1: PLC *= GRB2 and not Apoptosis
+1: GRB2 *= LCK and not Apoptosis
+1: CSK *= TCR and not Apoptosis
+1: Ceramide *= (BID and FasL) and not Apoptosis
+1: STAT3 *= JAK and not Apoptosis
+1: TBET *= IFNT and not Apoptosis
+1: PIAS *= not (STAT3 or Apoptosis)
+1: C-Myc *= STAT3 and not (Apoptosis or SMAD)
+1: NFAT *= PLC and not Apoptosis 
+1: Proliferation *= C-Myc and not Apoptosis
+1: SMAD *= (TGF and not SMAD7) and not Apoptosis
+1: SMAD7 *= SMAD and not Apoptosis
+1: Flip *= (NFKB or (CREB and IFN)) and not (Ceramide or IL2 or Apoptosis)
+1: NFKB *= ((TPL2 or PI3K) or (Flip and TRADD and IAP)) and not (Apoptosis or PIAS)
+1: IFN *= ((IL2 or Stimuli) and IFNT) and not (Apoptosis or SMAD)
+1: IFNT *= JAK and not Apoptosis
+1: IL2R *= (IL2 and STAT3) and not (IL2R or Apoptosis)
+1: IL2RL *= (IL2 and Erk) and not Apoptosis
+1: TPL2 *= TNF and not Apoptosis
+1: IL2 *= (NFKB or C-Myc or NFAT) and not (SMAD or TBET or Apoptosis)
+1: Ras *= (GRB2 or PLC) and not (GAP or Apoptosis)
+1: FasL *= (C-Myc or NFKB or NFAT or Erk) and not Apoptosis
+1: FasT *= NFKB or FasT and not Apoptosis
+1: Fas *= ((FasT and Ceramide) or (FasT and FasL and not sFas)) and not Apoptosis 
+1: sFas *= sFas
+1: MEK *= (TPL2 or Ras) and not Apoptosis
+1: Caspase *= Fas and not (Flip or IAP or Apoptosis)
+1: TGF *= (SMAD or Erk) and not (TNF or GZMB or Apoptosis)
+1: Erk *= MEK and not (Apoptosis or IFN)
+1: TNF *= (NFKB and PI3K) and not Apoptosis
+1: TRADD *= TNF and not (IAP or Apoptosis)
+1: Apoptosis *= Caspase or Apoptosis
+1: PI3K *= Ras and not Apoptosis
+1: BID *= (Caspase or GZMB) and not (BclxL or Mcl1 or Apoptosis) 
+1: IAP *= NFKB and not Apoptosis
+1: BclxL *= (NFKB and STAT3) and not (BID or (Ras and IFNT) or IL2 or Apoptosis)
+1: SOCS *= JAK and not (Apoptosis or IL2 or IL15)
+1: GAP *= Ras and not (IL15 or IL2 or Apoptosis) 
+1: JAK *= (JAK or IL2RL) and not (SOCS or CD45 or Apoptosis)
+1: RANTES *= NFKB and not Apoptosis
+1: GZMB *= (CREB or TBET or GZMB) and not Apoptosis
+1: CREB *= (Erk and IFN) and not Apoptosis
+1: Stimuli *=Stimuli
+1: Mcl1 *= (STAT3 and NFKB and Erk) and not ((Fas and IL2) or Apoptosis)
