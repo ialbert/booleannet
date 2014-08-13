@@ -1,4 +1,5 @@
-=Boolean Network Modeling= 
+Boolean Network Modeling
+========================
 
 The goal of this software package is to provide intuitive and accessible tools for simulating *biological regulatory networks* in a boolean formalism. Using this simulator biologist and bioinformaticians can specify their system in a simple textual language then explore various dynamic behaviors via a web interface or an application programming interface (API) each designed to facilitate scientific discovery, data collection and reporting.
 
@@ -10,20 +11,20 @@ Download the library:
 
 https://drive.google.com/folderview?id=0B1Q2dBPeRlunQndRVzVNZHlGQkk
 
-== Bugfix Note ==
+Bugfix Note
+-----------
 
 January 7, 2010. Please note that versions 1.2.0 to 1.2.4 of the BooleanNet package have  a bug that cause the node updates to execute in original (listed) order during the first iteration, before randomizing the order of nodes for subsequent iterations. This bug affects only the asynchronous update mechanism. 
 
 The net effect of the bug is that for certain type of rules the first execution of them may funnel the states into the basin of one of the attractors. Overall the answers will not be incorrect but, depending on the rules and order of nodes they may be incomplete. Please update to the latest version. My apologies. Istvan Albert
 
-==Publication==
+Publication
+-----------
 
-[http://www.scfbm.org/content/3/1/16 Boolean network simulations for life scientist]
-by _István Albert, Juilee Thakar, Song Li, Ranran Zhang_, and _Réka Albert_
-in *Source Code for Biology and Medicine (2008)* 
+[Boolean network simulations for life scientist](http://www.scfbm.org/content/3/1/16) by István Albert, Juilee Thakar, Song Li, Ranran Zhang, and Réka Albert in *Source Code for Biology and Medicine (2008)* 
 
-
-==Introduction==
+Introduction
+------------
 
 When trying to understand the role and functioning of a regulatory network,
 the first step is to assemble the components of the network and the interactions
@@ -32,7 +33,8 @@ between them. The experimental advances in the large scale mapping of regulatory
 In a Boolean representation we assume that nodes are equivalent, and their interactions form a directed graph in which each node receives inputs from its neighbors (nodes that are connected to it). The state of nodes is described by binary (ON/OFF) variables, and the dynamic behavior of each variable, that is, whether it will be ON or OFF at next moment, is governed by a Boolean function. In general, a Boolean or logical function is written as a statement acting on the inputs using the logical operators *and*, *or* and *not* and its output is ON(OFF) if the statement is true (false).
 
 
-==Documentation==
+Documentation
+--------------
 
 A [http://atlas.bx.psu.edu/booleannet/booleannet.html detailed documentation] is available on our external website. This documentation is also included in the source code distribution. See the:
 
@@ -41,7 +43,8 @@ A [http://atlas.bx.psu.edu/booleannet/booleannet.html detailed documentation] is
 
 for a quick overview on how the make the library work for you. 
 
-==About the library==
+About the library
+-----------------
 
 *Note* as of version 1.2 (Nov 12, 2008) the library has acquired several new features (see below) and underwent a substantial reorganization. To keep old code from interfering with new one the library namespace has been changed to *boolean2*
 
@@ -55,7 +58,8 @@ In this software package, we implement mutliple advanced methodologies which com
 
 http://booleannet.googlecode.com/svn/webdata/example-hybrid-override.png
 
-==Example Rules==
+Example Rules
+-------------
 
 Here are a few example rules for *BooleanNet* covering various research projects. Most of these rules were collected via a thorough literature search and were manually curated into their final form. These rules are available in the *examples/samples* directory of the source code distribution.
 
@@ -70,14 +74,15 @@ Some of the resulting plots based on the rules above:
 
 http://booleannet.googlecode.com/svn/webdata/footer.png 
 
-== Credits ==
-
+Credits
+-------
 
 The library has been designed and implemented by *[http://www.personal.psu.edu/iua1/ István Albert]* using previous work, ideas and contributions from:
   * *Song Li*
   * *[http://www.phys.psu.edu/%7Ejthakar/ Juilee Thakar]*
   * *Ranran Zhang*
   * *Assieh Saadatpour Moghaddam* 
+
 None of us would be thinking about Boolean Networks if it weren't for *[http://www.phys.psu.edu/~ralbert/ Réka Albert]*.
 
 Our software relies on the following third party libraries that are distributed with  the software:
