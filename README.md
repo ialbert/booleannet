@@ -1,13 +1,24 @@
 Boolean Network Modeling
 ========================
 
-The goal of this software package is to provide intuitive and accessible tools for simulating *biological regulatory networks* in a boolean formalism. Using this simulator biologist and bioinformaticians can specify their system in a simple textual language then explore various dynamic behaviors via a web interface or an application programming interface (API) each designed to facilitate scientific discovery, data collection and reporting.
+The goal of this software package is to provide intuitive and accessible tools for simulating *biological regulatory networks*
+in a boolean formalism. Using this simulator biologist and bioinformaticians can specify their system in a simple textual language then
+explore various dynamic behaviors via a web interface or an application programming interface (API) each designed to facilitate scientific discovery,
+data collection and reporting.
 
-The software is primarly distributed as [http://www.python.org Python] source code and requires that [http://www.python.org Python 2.5] (or later) be installed on the target computer. 
+The software is primarly distributed as [http://www.python.org Python] source code and requires that [http://www.python.org Python 2.5] (or later)
+be installed on the target computer.
 
 Latest release *1.2.7*, April 24th, 2014
 
 Download the library:
+
+Installation
+------------
+
+	pip install BooleanNet
+
+Download distribution:
 
 https://drive.google.com/folderview?id=0B1Q2dBPeRlunQndRVzVNZHlGQkk
 
