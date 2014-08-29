@@ -9,7 +9,7 @@ I will be happy to respond to questions and/or comments.
 Colin Campbell
 Contact: colin.campbell@psu.edu
 Python Version: 2.7.x
-Date: April 2014 (updated August 2014)
+Date: April 2014 (last updated August 2014)
 '''
 import networkx as nx
 import numpy as np
@@ -129,7 +129,7 @@ def superset(a):
 def damage_network(graph,a=None,force=None,force_type='knockout'):
     '''
     Takes a graph and superset attractor as input. Chooses either a transiently
-    active or permanently inactive node and force it to be knocked out or
+    active or permanently inactive node and forces it to be knocked out or
     overexpressed, respectively.
 
     Alternatively, if force != False, it must be an integer of a node's position
@@ -184,7 +184,7 @@ def compare_attractors(graph,a):
                     invalid += [state]
                     valid += [switch_state]                                     # Store the 'invalid' states; inputs to them reroute to the 'valid' states
         elif graph.graph['express'] != None:
-            if state[mod_index] == '0':
+            if state[graph.graph['express']] == '0':
                 switch_state = state[:graph.graph['express']] + ['1'] + state[graph.graph['express']+1:]
                 if switch_state in a[1]:
                     invalid += [state]
@@ -256,7 +256,7 @@ def check_stability(graph,a):
         else:
             try: asi = a[1].index(attr[1][0])                                   # See the 'starting index' of A_d relative to this attractor
             except Exception: return False                                      # If it isn't in this attractor, they obviously don't match
-            rotated = shift(a,asi)                                              # Then see if the aligned processions are equivalent at each position (same procession)
+            rotated = shift(a[1],asi)                                           # Then see if the aligned processions are equivalent at each position (same procession)
             if [i==j for i,j in zip(rotated,attr[1])].count(False) > 0: return False
     return True
 
