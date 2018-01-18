@@ -63,5 +63,5 @@ for i in range(10):
     seen [ key ] = (index, size, values )   
 
 # print out the observed states
-for first, values in seen.items():
-    print 'Start: %s -> %s' % (first, values)
+for first, values in list(seen.items()):
+    print('Start: %s -> %s' % (first, values))

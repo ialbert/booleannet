@@ -23,7 +23,7 @@ def set_value( state, name, value, p ):
 
     # detect the node of interest
     if name == 'B':
-        print 'now setting node %s' % name 
+        print('now setting node %s' % name) 
         value = random.choice ( (True, False) )
     
     # this sets the attribute
@@ -36,4 +36,4 @@ model.initialize()
 model.iterate( steps=5 )
 
 for state in model.states:
-    print state.A, state.B, state.C
+    print(state.A, state.B, state.C)

@@ -10,8 +10,8 @@ def smooth(data, w=0):
     fw = float(w)
     def average( index ):
         return sum( data[index: index+w] )/fw
-    indices = xrange( len(data) - w )        
-    out = map( average, indices )
+    indices = range( len(data) - w )        
+    out = list(map( average, indices ))
     return out
 
 def make_plot():
@@ -24,7 +24,7 @@ def make_plot():
 
     # applies smoothing to all values
     for run in (run1, run2, run3, run4):
-        for key, values in run.items():
+        for key, values in list(run.items()):
             run[key] = smooth( values, w=10 )
     
     #

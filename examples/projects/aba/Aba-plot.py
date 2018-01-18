@@ -6,7 +6,7 @@ Absicis Acid Signaling - simulation
 """
 import sys
 from pylab import *
-from boolean import util
+from boolean2 import util
 import numpy
 
 def make_plot( fname ):
@@ -29,8 +29,8 @@ def make_plot( fname ):
     for gene,color in zip(genes,color):
         means, std = data[gene]
         plots.append(plot( means , linestyle = '-',color = color ))
-        upper = map(limit, means+std)
-        lower = map(limit, means-std)
+        upper = list(map(limit, means+std))
+        lower = list(map(limit, means-std))
         plot( upper , linestyle = '--',color = color, lw=2 )
         plot( lower , linestyle = '--', color = color , lw=2 )
     

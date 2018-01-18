@@ -13,17 +13,17 @@ def find_stdev( text, node, knockouts, repeat, steps ):
     fullt  = 10
     mode  = 'plde'
     step = fullt*10
-    print '- start run, %s' % mode
+    print('- start run, %s' % mode)
     
     model = Model( mode=mode, text=text )
     results = {}
     values=[]
     coll={}
     for gene in knockouts:
-        for i in xrange( repeat ):
+        for i in range( repeat ):
             model.initialize( missing=util.randbool , defaults = {gene:(0.0,1.0,step*10)})
             model.iterate( steps=step, fullt=fullt ) 
-            values = map( float,  model.data[node] )
+            values = list(map( float,  model.data[node] ))
             results.setdefault(gene,[]).append( values )
         
         resmat = numpy.array( results[gene] )  
@@ -39,8 +39,8 @@ def run_plde( text, repeat, fullt ):
     steps  = fullt * 10
     model = Model( mode='plde', text=text )
     coll = []
-    print '- start plde'
-    for i in xrange( repeat ):
+    print('- start plde')
+    for i in range( repeat ):
         model.initialize( missing=util.randbool )
         model.iterate( fullt=fullt, steps=steps )
         coll.append( model.data )
@@ -55,11 +55,11 @@ def run_mutations( text, repeat, steps ):
     data = {}
     knockouts = 'WT S1P PA pHc ABI1 ROS'.split()
     for target in knockouts:
-        print '- target %s' % target
+        print('- target %s' % target)
         mtext  = boolean2.modify_states( text=text, turnoff=target )
         model = Model( mode='async', text=mtext )
         coll   = util.Collector()
-        for i in xrange( repeat ):
+        for i in range( repeat ):
             # unintialized nodes set to random
             model.initialize( missing=util.randbool )
             model.iterate( steps=steps )
@@ -80,4 +80,4 @@ if __name__ == '__main__':
     muts = run_mutations( text, repeat=REPEAT, steps=STEPS )
     obj  = dict( data=data, muts=muts )
     util.bsave( obj=obj, fname='ABA-run.bin' )
-    print 'finished simulation'
+    print('finished simulation')

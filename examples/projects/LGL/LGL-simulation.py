@@ -33,7 +33,7 @@ def run( text, nodes, repeat, steps ):
     """
     coll = util.Collector()
     
-    for i in xrange( repeat ):
+    for i in range( repeat ):
         engine  = Model( mode='async', text=text )
         engine.RULE_GETVALUE = new_getvalue
         # minimalist initial conditions, missing nodes set to false
@@ -41,7 +41,7 @@ def run( text, nodes, repeat, steps ):
         engine.iterate( steps=steps)
         coll.collect( states=engine.states, nodes=nodes )
 
-    print '- completed'
+    print('- completed')
     avgs = coll.get_averages( normalize=True )
     return avgs
 
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     data = []
     
-    print '- starting simulation with REPEAT=%s, STEPS=%s' % (REPEAT, STEPS)
+    print('- starting simulation with REPEAT=%s, STEPS=%s' % (REPEAT, STEPS))
 
     # a single overexpressed node
     mtext = boolean2.modify_states( text=text, turnon=['Stimuli'] )
@@ -87,4 +87,4 @@ if __name__ == '__main__':
     
     fname = 'LGL-run.bin'
     util.bsave( data, fname=fname )
-    print '- data saved into %s' % fname
+    print('- data saved into %s' % fname)

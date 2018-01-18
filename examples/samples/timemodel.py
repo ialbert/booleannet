@@ -34,7 +34,7 @@ def simulation( ):
     for data, initfunc in initializer:
         model.initialize( missing=initfunc )
         model.iterate( 12 )
-        trans.add( model.states, times=range(12) )
+        trans.add( model.states, times=list(range(12)) )
 
     # saves the transition graph into a gml file
     trans.save( 'timemodel.gml' )

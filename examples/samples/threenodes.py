@@ -22,7 +22,7 @@ def simulation( trans ):
     for data, initfunc in initializer:
         model.initialize(missing=initfunc)
         model.iterate(5)
-        trans.add( model.states, times=range(5) )
+        trans.add( model.states, times=list(range(5)) )
 
 def main():
     "This is the main code that runs the simulation many times"
