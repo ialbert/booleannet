@@ -6,7 +6,7 @@ in a boolean formalism. Using this simulator biologist and bioinformaticians can
 explore various dynamic behaviors via a web interface or an application programming interface (API) each designed to facilitate scientific discovery,
 data collection and reporting.
 
-The software is primarly distributed as [http://www.python.org Python] source code and requires that [http://www.python.org Python 2.5] (or later)
+The software is primarly distributed as [http://www.python.org Python] source code and requires that [http://www.python.org Python 3.6] (or later)
 be installed on the target computer.
 
 Latest release *1.2.7*, April 24th, 2014
@@ -46,7 +46,6 @@ In a Boolean representation we assume that nodes are equivalent, and their inter
 
 Documentation
 --------------
-
 A [http://atlas.bx.psu.edu/booleannet/booleannet.html detailed documentation] is available on our external website. This documentation is also included in the source code distribution. See the:
 
   * [http://atlas.bx.psu.edu/booleannet/booleannet.html#Installation Installation] 
