@@ -47,12 +47,7 @@ In a Boolean representation we assume that nodes are equivalent, and their inter
 Documentation
 --------------
 
-A [http://atlas.bx.psu.edu/booleannet/booleannet.html detailed documentation] is available on our external website. This documentation is also included in the source code distribution. See the:
-
-  * [http://atlas.bx.psu.edu/booleannet/booleannet.html#Installation Installation] 
-  * [http://atlas.bx.psu.edu/booleannet/booleannet.html#Tutorials Tutorials] 
-
-for a quick overview on how the make the library work for you. 
+A detailed documentation] is available in the `docs` folder. 
 
 About the library
 -----------------
