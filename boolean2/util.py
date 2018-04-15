@@ -100,9 +100,10 @@ def list_gcd( data ):
 def as_set( nodes ):
     "Wraps input into a set if needed. Allows single input or any iterable"
     if isinstance(nodes, str):
-        return set( [ nodes ] )
+         return set( [ nodes ] )
     else:
-        return set(nodes)    
+         return set(nodes)
+
 
 def bsave( obj, fname='data.bin' ):
     """
@@ -112,11 +113,11 @@ def bsave( obj, fname='data.bin' ):
     >>> obj == bload()
     True
     """
-    pickle.dump( obj, file(fname, 'wb'), protocol=2 ) # maximal compatibility
+    pickle.dump( obj, open(fname, 'wb'), protocol=2 ) # maximal compatibility
 
 def bload( fname='data.bin' ):
     "Loads a pickle from a file"
-    return pickle.load( file(fname, 'rb') )
+    return pickle.load( open(fname, 'rb') )
 
 class Collector(object):
     """

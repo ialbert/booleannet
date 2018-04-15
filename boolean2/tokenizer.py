@@ -3,8 +3,8 @@ Main tokenizer.
 """
 from itertools import *
 import sys, random
-from . import util
-from .ply import lex
+from boolean2 import util
+from boolean2.ply import lex
 
 
 class Lexer:

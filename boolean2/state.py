@@ -114,7 +114,7 @@ def all_initial_states( nodes, limit=None ):
     >>> generator = all_initial_states(nodes)
     >>>
     >>> for data, func in generator:
-    ...     map(func, nodes)
+    ...     list(map(func, nodes))
     [False, False]
     [False, True]
     [True, False]

@@ -1,6 +1,5 @@
-from . import util
-from .ruleparser import Parser
-from . import tokenizer, util, state
+from boolean2 import util, tokenizer, state
+from boolean2.ruleparser import Parser
 
 class BoolModel(Parser):
     """

@@ -3,7 +3,7 @@ import sys
 sys.path.append( '..' )
 
 import unittest
-from boolean import Model, helper, util
+from boolean2 import Model, helper, util
 
 class HelperTest( unittest.TestCase ):
     

@@ -1,6 +1,6 @@
-from . import util
-from . import ruleparser
-from .boolmodel import BoolModel
+from boolean2 import util
+from boolean2 import ruleparser
+from boolean2.boolmodel import BoolModel
 
 class TimeModel( BoolModel ):
 

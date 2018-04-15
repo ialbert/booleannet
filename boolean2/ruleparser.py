@@ -2,8 +2,8 @@
 Grammar file for a boolean parser based on PLY
 """
 import random, time, sys
-from . import tokenizer, util, state
-from .ply import yacc
+from boolean2 import tokenizer, util, state
+from boolean2.ply import yacc
 from itertools import *
 
 # a list of all valid modes
