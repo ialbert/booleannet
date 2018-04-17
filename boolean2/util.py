@@ -12,14 +12,19 @@ notcomment = lambda x: x and not x.startswith('#')
 strip  = lambda x: x.strip()
 upper  = lambda x: x.upper()
 
+
+class BooleanError(Exception):
+    pass
+
 def join( data, sep="\t", patt="%s\n"):
     "Joins a list by sep and formats it via pattern"
     return patt % sep.join( map(str, data))
 
 def error(msg):
     "Prints an error message and stops"
-    print('*** error: %s' % msg)
-    sys.exit()
+
+    raise BooleanError(f'{msg}')
+
 
 def warn(msg):
     "Prints a warning message"
