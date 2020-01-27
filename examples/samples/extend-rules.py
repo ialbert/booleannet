@@ -40,4 +40,4 @@ model.initialize()
 model.iterate( steps=5 )
 
 for state in model.states:
-    print state.A, state.B, state.C
+    print(state.A, state.B, state.C)

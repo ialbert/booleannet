@@ -26,13 +26,13 @@ model.iterate( steps=5 )
 
 # you can print the states
 for state in model.states:
-    print state
+    print(state)
 
-print '-' * 20
+print('-' * 20)
 
 # save states into a file
 model.save_states( 'states.txt' )
 
 # two ways to access nodes for a state
 for state in model.states:
-    print state['A'], state.A
+    print(state['A'], state.A)

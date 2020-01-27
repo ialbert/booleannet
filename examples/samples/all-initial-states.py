@@ -19,6 +19,6 @@ initializer = state.all_initial_states( model.nodes, limit=None )
 # the data is the inital data, the func is the initializer
 for data, initfunc in initializer:
     # shows the initial values
-    print data
+    print(data)
     model.initialize(missing=initfunc)
     model.iterate(5)

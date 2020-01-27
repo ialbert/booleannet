@@ -5,8 +5,8 @@ from itertools import *
 # import path fixup
 sys.path.append( '..' )
 
-import boolean
-from boolean.functional import *
+import boolean2 as boolean
+from boolean2.functional import *
 
 #
 # helper functions
@@ -112,8 +112,8 @@ class ModelTest( unittest.TestCase ):
                 EQ( state.A, True )
 
             # create extractor functions
-            funcs  = [ partial( get, attr=attr ) for attr in 'ABC' ]
-
+            #funcs  = [ partial( get, attr=attr ) for attr in 'ABC' ]
+            funcs = []
             # map to the data
             values = [ map( f, states ) for f in funcs ]
             
@@ -208,9 +208,9 @@ class ModelTest( unittest.TestCase ):
         # execute the code in python for a number of steps
         # having too many steps is bad as it falls into a steady state
         steps = 4
-        exec init_text
+        exec(init_text)
         for i in range( steps ):
-            exec py_text in locals()
+            exec(str(py_text in locals()))
         
         # see the full text here
         #print full_text

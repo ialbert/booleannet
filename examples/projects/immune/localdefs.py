@@ -90,4 +90,4 @@ def positive(x):
 
 if __name__ == '__main__':
     for i in range(10):
-        print slow_sticky_prop( label='A', rc=10, r=1, t=i)
+        print(slow_sticky_prop( label='A', rc=10, r=1, t=i))

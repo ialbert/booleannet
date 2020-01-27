@@ -1,4 +1,5 @@
 import sys, random, pickle
+from functools import reduce
 
 #
 # handy shortcuts
@@ -11,18 +12,23 @@ notcomment = lambda x: x and not x.startswith('#')
 strip  = lambda x: x.strip()
 upper  = lambda x: x.upper()
 
+
+class BooleanError(Exception):
+    pass
+
 def join( data, sep="\t", patt="%s\n"):
     "Joins a list by sep and formats it via pattern"
     return patt % sep.join( map(str, data))
 
 def error(msg):
     "Prints an error message and stops"
-    print '*** error: %s' % msg
-    sys.exit()
+
+    raise BooleanError(f'{msg}')
+
 
 def warn(msg):
     "Prints a warning message"
-    print '*** warning: %s' % msg
+    print('*** warning: %s' % msg)
  
 def tuple_to_bool( value ):
     """
@@ -50,7 +56,7 @@ def split( text ):
     """
     Strips lines and returns nonempty lines
     """
-    return filter(notcomment, map(strip, text.splitlines()))
+    return list(filter(notcomment, list(map(strip, text.splitlines()))))
 
 def default_shuffler( lines ):
     "Default shuffler"
@@ -74,8 +80,8 @@ def detect_cycles( data ):
     fsize   = len(data)
 
     # maximum size
-    for msize in xrange(1, fsize/2+1):
-        for index in xrange(fsize):
+    for msize in range(1, int(fsize/2+1)):
+        for index in range(fsize):
             left  = data[index:index+msize]
             right = data[index+msize:index+2*msize]
             if left == right:
@@ -99,9 +105,10 @@ def list_gcd( data ):
 def as_set( nodes ):
     "Wraps input into a set if needed. Allows single input or any iterable"
     if isinstance(nodes, str):
-        return set( [ nodes ] )
+         return set( [ nodes ] )
     else:
-        return set(nodes)    
+         return set(nodes)
+
 
 def bsave( obj, fname='data.bin' ):
     """
@@ -111,11 +118,11 @@ def bsave( obj, fname='data.bin' ):
     >>> obj == bload()
     True
     """
-    pickle.dump( obj, file(fname, 'wb'), protocol=2 ) # maximal compatibility
+    pickle.dump( obj, open(fname, 'wb'), protocol=2 ) # maximal compatibility
 
 def bload( fname='data.bin' ):
     "Loads a pickle from a file"
-    return pickle.load( file(fname, 'rb') )
+    return pickle.load( open(fname, 'rb') )
 
 class Collector(object):
     """
@@ -152,7 +159,7 @@ class Collector(object):
             if normalize:
                 def divide(x):
                     return x/size
-                values = map(divide, values)
+                values = list(map(divide, values))
             out[node] = values
         return out
 

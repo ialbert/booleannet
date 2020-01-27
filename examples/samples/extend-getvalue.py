@@ -23,7 +23,7 @@ def get_value( state, name, p ):
 
     # detect the node of interest
     if name == 'B':
-        print 'now getting node %s' % name 
+        print('now getting node %s' % name) 
         return random.choice ( (True, False) )
     else:
         # returns the normal value
@@ -35,4 +35,4 @@ model.initialize()
 model.iterate( steps=5 )
 
 for state in model.states:
-    print state.A, state.B, state.C
+    print(state.A, state.B, state.C)

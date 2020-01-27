@@ -5,7 +5,7 @@
 #
 # http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/496761
 #
-from UserDict import DictMixin
+from collections import MutableMapping as DictMixin
 
 class odict(DictMixin):
     """
@@ -35,7 +35,7 @@ class odict(DictMixin):
     def __init__(self, **kwds):
         self._keys = []
         self._data = {}
-        for key, value in kwds.items():
+        for key, value in list(kwds.items()):
             self[key] = value
         
     def __setitem__(self, key, value):

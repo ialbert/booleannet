@@ -1,12 +1,12 @@
-import util
+from boolean2 import util
 import random
 from itertools import count
 
 try:
     import networkx
-    from networkx import component
-except ImportError:
-    util.error( "networkx is missing, install it from https://networkx.lanl.gov/")
+    from networkx import components as component
+except ImportError as exc:
+    util.error( f"networkx import error : {exc}. Install newest version from https://networkx.lanl.gov/")
 
 # color constants
 BLUE, RED, GREEN = "#0000DD", "#DD0000", "#00DD00"
@@ -24,7 +24,7 @@ def component_colormap(graph):
     colors = [ ORANGE, SPRING_GREEN, GOLD, TEAL, PURPLE, NAVY, SIENNA, CRIMSON, BLUE, ]
     
     # find the strongly connected components
-    components = component.strongly_connected_components( graph )
+    components = list(component.strongly_connected_components( graph ))
     
     # make sure we have as many colors as components
     if len(colors) < len(components):
@@ -79,7 +79,7 @@ class TransGraph(object):
         "Adds states to the transition"
     
         # generating the fingerprints and sto
-        times = times or range(len(states))
+        times = times or list(range(len(states)))
         fprints = []
         for state in states:
             if self.verbose:
@@ -105,19 +105,19 @@ class TransGraph(object):
         self.fp.write( '*** node values ***\n' )
 
         # writes the mapping
-        first = self.store.values()[0]
-        header = [ 'state' ] + first.keys()
+        first = list(self.store.values())[0]
+        header = [ 'state' ] + list(first.keys())
         self.fp.write( util.join(header) )
         
         for fprint, state in sorted( self.store.items() ):
-            line = [ fprint ]  + map(int, state.values() )
+            line = [ fprint ]  + list(map(int, list(state.values()) ))
             self.fp.write( util.join(line) )
 
 def test():
     """
     Main testrunnner
     """
-    import boolmodel
+    from boolean2 import boolmodel
     
     text = """
     A = True

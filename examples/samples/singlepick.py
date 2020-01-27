@@ -29,7 +29,7 @@ def simulation( trans ):
     for data, initfunc in initializer:
         model.initialize(missing=initfunc)
         model.iterate(15, shuffler=mypick)
-        trans.add( model.states, times=range(15) )
+        trans.add( model.states, times=list(range(15)) )
 
 def main():
     "This is the main code that runs the simulation many times"

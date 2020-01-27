@@ -23,7 +23,7 @@ model.iterate( steps=15 )
 
 # the model data attribute holds the states keyed by nodes
 for node in model.data:
-    print node, model.data[node]
+    print(node, model.data[node])
 
 # this is a helper function that reports the cycle lengths 
 # and the  index at wich the cycle started
@@ -33,7 +33,7 @@ model.report_cycles()
 # the same thing as above but
 # will not print only return the two parameters
 #
-print model.detect_cycles()    
+print(model.detect_cycles())    
 
 #
 # this is how one plots the values, delete this below

@@ -41,4 +41,4 @@ model.initialize()
 model.iterate( steps=5 )
 
 for state in model.states:
-    print state
+    print(state)
