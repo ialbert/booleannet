@@ -7,9 +7,7 @@ data collection and reporting.
 
 Latest release *1.2.7*, April 24th, 2014
 
-Download the library:
-
-## Installation
+# Installation instructions
 
 The code requires Python 2.7. The simplest installation works through [conda][conda] installer that can maintain different versions of Python on the same machine. Install [conda][conda] then from the command line:
 
