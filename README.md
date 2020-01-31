@@ -1,26 +1,37 @@
-Boolean Network Modeling
-========================
+# Boolean Network Modeling
 
 The goal of this software package is to provide intuitive and accessible tools for simulating *biological regulatory networks*
 in a boolean formalism. Using this simulator biologist and bioinformaticians can specify their system in a simple textual language then
 explore various dynamic behaviors via a web interface or an application programming interface (API) each designed to facilitate scientific discovery,
 data collection and reporting.
 
-The software is primarly distributed as [http://www.python.org Python] source code and requires that [http://www.python.org Python 3.6] (or later)
-be installed on the target computer.
-
 Latest release *1.2.7*, April 24th, 2014
 
 Download the library:
 
-Installation
-------------
+## Installation
 
-	pip install BooleanNet
+The code requires Python 2.7. The simplest installation works through conda manager:
 
-Download distribution:
+```
+# Create the python 2 environment.
+conda create --name py2 python=2.7
 
-https://drive.google.com/folderview?id=0B1Q2dBPeRlunQndRVzVNZHlGQkk
+# Activate the environment
+conda activate py2
+
+# Install matplotlib version 2.2
+conda install matplotlib=2
+
+# Install Booleannet
+pip install booleannet
+
+# Download a test simulation
+wget https://raw.githubusercontent.com/ialbert/booleannet/master/examples/projects/LGL/LGL-simulation.py
+
+# Run the test simulation 
+python LGL-simulation.py
+```
 
 Bugfix Note
 -----------
