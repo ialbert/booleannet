@@ -9,7 +9,11 @@ Latest release *1.2.7*, April 24th, 2014
 
 # Installation instructions
 
-The code requires Python 2.7. The simplest installation works through [conda][conda] installer that can maintain different versions of Python on the same machine. Install [conda][conda] then from the command line:
+The code requires Python 2.7. The simplest installation works through the [conda][conda] installer that can maintain different versions of Python on the same machine. 
+
+1. Install [conda][conda]
+
+Once conda is installed, from a command line do the following:
 
 [conda]: https://docs.conda.io/en/latest/miniconda.html
 
