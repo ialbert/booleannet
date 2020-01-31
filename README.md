@@ -11,7 +11,9 @@ Download the library:
 
 ## Installation
 
-The code requires Python 2.7. The simplest installation works through conda manager:
+The code requires Python 2.7. The simplest installation works through [conda][conda] installer that can maintain different versions of Python on the same machine. Install [conda][conda] then from the command line:
+
+[conda]: https://docs.conda.io/en/latest/miniconda.html
 
 ```
 # Create the python 2 environment.
@@ -25,7 +27,11 @@ conda install matplotlib=2
 
 # Install Booleannet
 pip install booleannet
+```
 
+You can verify the installation by running test simulations:
+
+```
 # Download a test simulation
 wget https://raw.githubusercontent.com/ialbert/booleannet/master/examples/projects/LGL/LGL-simulation.py
 
